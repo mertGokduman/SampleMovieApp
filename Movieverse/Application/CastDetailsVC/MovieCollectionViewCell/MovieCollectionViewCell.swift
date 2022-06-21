@@ -30,6 +30,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
         // Initialization code
     }
     
+    // Set Cell with Movie Data
     private func setData() {
         
         guard let movie = movie else { return }
@@ -38,6 +39,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
         getImage(with: movie.backdropPath)
     }
     
+    // Get Image with Kingfisher
     private func getImage(with urlPath: String?) {
         
         if let urlPath = urlPath {

@@ -37,6 +37,7 @@ class CastDetailsViewModel: BaseViewModel {
         getPerson()
     }
     
+    // Getting Person Data From Service
     private func getPerson() {
         
         guard let personID = personID.value else { return }
@@ -61,6 +62,7 @@ class CastDetailsViewModel: BaseViewModel {
         }
     }
     
+    // Getting Person Movie Credits From Service
     private func getPersonCredits() {
 
         guard let personID = personID.value else { return }
@@ -83,6 +85,7 @@ class CastDetailsViewModel: BaseViewModel {
         }
     }
     
+    // Getting Images with Kingfisher
     func getImages(to imageView: UIImageView) {
         guard let urlParh = personDetails.value?.profilePath else { return }
         
@@ -91,6 +94,7 @@ class CastDetailsViewModel: BaseViewModel {
         imageView.kf.setImage(with: imageUrl)
     }
     
+    // IMDb Button Pressed
     func btnIMDBPressed() {
         var urlString: String = ""
         if let imdbKey = personDetails.value?.imdbID {
@@ -102,21 +106,25 @@ class CastDetailsViewModel: BaseViewModel {
         state.send(CastDetailsViewState.openWebView(urlString))
     }
     
+    // Website Button Pressed
     func btnWebPressed()  {
         guard let urlString = personDetails.value?.homepage else { return }
         state.send(CastDetailsViewState.openWebView(urlString))
     }
     
+    // Dismiss Button Pressed
     func btnClosePressed() {
         state.send(CastDetailsViewState.dismissPage)
     }
     
+    // Movie COllectionView Cell Pressed
     func collectionViewCellPressed(index: Int) {
         if let id = movieCast[index].id {
             state.send(CastDetailsViewState.openMovieDetail(id))
         }
     }
     
+    // Service Failed Error Handler
     func initErrorHandler() {
         errorHandler = { _ in
             self.pageOpened()

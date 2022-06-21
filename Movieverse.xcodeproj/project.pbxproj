@@ -220,7 +220,6 @@
 		B49F0A66285DF6B8002ADD61 /* Movieverse */ = {
 			isa = PBXGroup;
 			children = (
-				B4AE765C2860B3A700125B87 /* Fonts */,
 				B49F0A98285DF76B002ADD61 /* Application */,
 				B49F0AAF285DF835002ADD61 /* BaseUI */,
 				B49F0A9A285DF779002ADD61 /* Networking */,
@@ -252,6 +251,7 @@
 		B49F0A97285DF75B002ADD61 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B4AE765C2860B3A700125B87 /* Fonts */,
 				B49F0A9F285DF7A0002ADD61 /* Lotties */,
 				B49F0A70285DF6BA002ADD61 /* Assets.xcassets */,
 				B49F0A72285DF6BA002ADD61 /* LaunchScreen.storyboard */,
@@ -264,8 +264,8 @@
 			children = (
 				B49F0A99285DF770002ADD61 /* AppDelegate */,
 				B49F0AA0285DF7AF002ADD61 /* MainVC */,
-				B49F0AA2285DF7BB002ADD61 /* CastDetailsVC */,
 				B49F0AA1285DF7B5002ADD61 /* MovieDetailsVC */,
+				B49F0AA2285DF7BB002ADD61 /* CastDetailsVC */,
 			);
 			path = Application;
 			sourceTree = "<group>";

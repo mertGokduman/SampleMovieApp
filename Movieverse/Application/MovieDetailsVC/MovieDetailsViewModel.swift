@@ -38,6 +38,7 @@ class MovieDetailsViewModel: BaseViewModel {
         getMovieDetail()
     }
     
+    // Getting Movie Detail From Service
     private func getMovieDetail() {
         
         guard let movieID = movieID.value else { return }
@@ -63,6 +64,7 @@ class MovieDetailsViewModel: BaseViewModel {
         }
     }
     
+    // Getting Movie Trailes
     private func getTrailers() {
         
         guard let movieID = movieID.value else { return }
@@ -79,6 +81,7 @@ class MovieDetailsViewModel: BaseViewModel {
         }
     }
     
+    // Getting Movie Casts
     private func getCasts() {
         
         guard let movieID = movieID.value else { return }
@@ -101,6 +104,7 @@ class MovieDetailsViewModel: BaseViewModel {
         }
     }
     
+    // Getting Image with Kingfisher
     func getImages(to imageView: UIImageView) {
         guard let movie = movieDetails.value else { return }
         let urlPath = movie.backdropPath != nil ? movie.backdropPath : movie.posterPath
@@ -109,6 +113,7 @@ class MovieDetailsViewModel: BaseViewModel {
         imageView.kf.setImage(with: imageUrl)
     }
     
+    // Play button Pressed
     func btnPlayPressed() {
         var urlString: String = ""
         if let videoKey = movieVideoKey.value?.key {
@@ -120,6 +125,7 @@ class MovieDetailsViewModel: BaseViewModel {
         state.send(MovieDetailsViewState.openWebView(urlString))
     }
     
+    // IMDb Button Pressed
     func btnIMDBPressed() {
         var urlString: String = ""
         if let imdbKey = movieDetails.value?.imdbID {
@@ -131,15 +137,18 @@ class MovieDetailsViewModel: BaseViewModel {
         state.send(MovieDetailsViewState.openWebView(urlString))
     }
     
+    // Website Button Pressed
     func btnWebPressed()  {
         guard let urlString = movieDetails.value?.homepage else { return }
         state.send(MovieDetailsViewState.openWebView(urlString))
     }
     
+    // Dismiss Button Pressed
     func btnClosePressed() {
         state.send(MovieDetailsViewState.dismissPage)
     }
     
+    // Get All Genres
     func getGenreString() -> String {
         if let genre = movieDetails.value?.genres, !genre.isEmpty {
             var string = ""
@@ -153,6 +162,7 @@ class MovieDetailsViewModel: BaseViewModel {
         return ""
     }
     
+    // Get Runtime as Hour and Min
     func getRuntime() -> String {
         guard let runtime = movieDetails.value?.runtime else { return ""}
         let hour = runtime / 60
@@ -161,12 +171,14 @@ class MovieDetailsViewModel: BaseViewModel {
         return strRuntime
     }
     
+    // Cast Collection View Cell Pressed
     func collectionViewCellPressed(index: Int) {
         if let id = movieCast[index].id {
             state.send(MovieDetailsViewState.openCastDetail(id))
         }
     }
     
+    // Service Failed Error Handler
     func initErrorHandler() {
         errorHandler = { _ in
             self.pageOpened()

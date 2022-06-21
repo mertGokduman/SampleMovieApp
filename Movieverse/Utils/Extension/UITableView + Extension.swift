@@ -8,7 +8,9 @@
 import Foundation
 import UIKit
 
+// For register and create cell 
 extension UITableView {
+    
     func register<T: UITableViewCell>(_ type: T.Type) {
         let name = String(describing: type).components(separatedBy: ".")[0]
         register(UINib(nibName: name, bundle: nil), forCellReuseIdentifier: T.defaultReuseIdentifier)

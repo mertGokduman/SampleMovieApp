@@ -57,6 +57,7 @@ class CastDetailsViewController: BaseVC<CastDetailsViewModel> {
         viewModel.pageOpened()
     }
     
+    // Binding PersonDetails
     override func bind() {
         viewModel.personDetails.observeNext { [weak self] person in
             guard let self = self,
@@ -74,6 +75,7 @@ class CastDetailsViewController: BaseVC<CastDetailsViewModel> {
         }.dispose(in: bag)
     }
     
+    // Binding MovieCast to CollectionView
     private func bindCollectionView() {
         
         viewModel.movieCast.bind(to: moviesCollectionView) { cast , indexpath, collectionview -> UICollectionViewCell in
@@ -84,12 +86,14 @@ class CastDetailsViewController: BaseVC<CastDetailsViewModel> {
         moviesCollectionView.reactive.selectedItemIndexPath.map { $0.row }.bind(to: viewModel.selectedIndex).dispose(in: bag)
     }
     
+    // Button Bindings
     private func buttonBindings() {
         btnBack.reactive.tap.bind(to: self) { $0.viewModel.btnClosePressed() }.dispose(in: bag)
         btnWeb.reactive.tap.bind(to: self) { $0.viewModel.btnWebPressed() }.dispose(in: bag)
         btnIMDB.reactive.tap.bind(to: self) { $0.viewModel.btnIMDBPressed() }.dispose(in: bag)
     }
     
+    // Movies CollectionView Cell Pressed
     private func collectionViewCellSelected() {
         viewModel.selectedIndex.observeNext { [weak self] index in
             guard let index = index,
@@ -98,6 +102,7 @@ class CastDetailsViewController: BaseVC<CastDetailsViewModel> {
         }.dispose(in: bag)
     }
     
+    // CastDetailsViewController States
     override func onStateChanged(_ state: ViewState) {
         guard let state = state as? CastDetailsViewState else { return }
         switch state {
@@ -117,6 +122,7 @@ class CastDetailsViewController: BaseVC<CastDetailsViewModel> {
         }
     }
     
+    // Present to MovieDetailsVC
     private func presentToMovieDetailVC(for id: Int) {
         let vc = MovieDetailsViewController()
         vc.modalPresentationStyle = .overCurrentContext
@@ -125,6 +131,7 @@ class CastDetailsViewController: BaseVC<CastDetailsViewModel> {
     }
 }
 
+//MARK: - UICollectionViewDelegateFlowLayout
 extension CastDetailsViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

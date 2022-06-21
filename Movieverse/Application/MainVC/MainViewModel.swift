@@ -44,6 +44,7 @@ class MainViewModel: BaseViewModel {
         getMovies()
     }
     
+    // Get Popular Movies From Service
     private func getMovies() {
         api?.getPopularMovies(page: 1,
                               succeed: parsePopularMovies,
@@ -63,7 +64,8 @@ class MainViewModel: BaseViewModel {
                                    statusCode)) 
         }
     }
-        
+    
+    // Pagination For Popular Movies
     func moviesPagination() {
         currentPage += 1
         api?.getPopularMovies(page: currentPage,
@@ -79,6 +81,7 @@ class MainViewModel: BaseViewModel {
         state.send(MainViewState.pagination)
     }
     
+    //Get Searched Movies and People From Service
     func getSearchedResults(searchedText: String) {
         let searchText = searchedText.replacingOccurrences(of: " ",
                                                            with: "%20")
@@ -102,17 +105,20 @@ class MainViewModel: BaseViewModel {
         }
     }
     
+    // Remove TvShows From Searched Data
     private func removeTvShows(data: [SearchResult]) -> [SearchResult] {
         let newList = data.filter { $0.mediaType != "tv"}
         return newList
     }
     
+    // Popular Movies TableView Cell Pressed
     func tableViewCellPressed(index: Int) {
         if let id = popularResults[index].id {
             state.send(MainViewState.tableViewPressed(id))
         }
     }
     
+    // Searched Movies or People Cell Pressed
     func searchTableViewCellPressed(index: Int) {
         if let id = searchResults[index].id,
            let type = searchResults[index].mediaType {
@@ -120,6 +126,7 @@ class MainViewModel: BaseViewModel {
         }
     }
     
+    // Service Failed Error Handler
     func initErrorHandler() {
         errorHandler = { _ in
             self.pageOpened()

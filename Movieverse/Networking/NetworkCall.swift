@@ -15,12 +15,14 @@ class NetworkCall {
     let baseURL: String = "https://api.themoviedb.org/3/"
     let APIKey: String = "e3dd57661eaddf9209001d016a63ed90"
     
+    // Internet Connection Control Method
     private func networkIsReachable() ->  Bool {
         let networkManager = NetworkReachabilityManager()
         let result = networkManager?.isReachable
         return result~
     }
     
+    // Creating URL
     private func getURLPath(urlType: URLType, movieID: Int?, personID: Int?, page: Int?, searchText: String?) -> URL? {
         switch urlType {
         case .popularMovies:
@@ -40,6 +42,7 @@ class NetworkCall {
         }
     }
     
+    // Service Request
     func request<S: Codable>(methodType: HTTPMethod,
                              urlType: URLType,
                              movieID: Int? = nil,

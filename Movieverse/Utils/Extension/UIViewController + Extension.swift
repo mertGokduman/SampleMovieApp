@@ -10,12 +10,14 @@ import UIKit
 
 extension UIViewController {
     
+    // Alert Show Method
     func showAlert(alert: UIAlertController) {
         DispatchQueue.main.async {
             self.present(alert, animated: true)
         }
     }
     
+    // Blue View For DetailsVCs
     func createBlurView(for view: UIView) {
         guard !UIAccessibility.isReduceTransparencyEnabled else { return }
         view.backgroundColor = .clear

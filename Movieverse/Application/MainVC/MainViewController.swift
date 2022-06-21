@@ -81,6 +81,7 @@ class MainViewController: BaseVC<MainViewModel> {
         viewModel.pageOpened()
     }
     
+    // Binding Popular Movies TableView
     override func bind() {
         
         viewModel.popularResults.bind(to: tableView) { movie, indexpath, tableview -> UITableViewCell in
@@ -96,6 +97,7 @@ class MainViewController: BaseVC<MainViewModel> {
             }
         }.dispose(in: bag)
         
+        // Alert Present
         viewModel.alert.observeNext { [weak self] alert in
             guard let self = self else { return }
             self.stopLoading()
@@ -105,6 +107,7 @@ class MainViewController: BaseVC<MainViewModel> {
         }.dispose(in: bag)
     }
     
+    //Binding Search TableView
     private func bindSearchTableView() {
         
         if viewModel.totalSearchedResult == 0 {
@@ -131,6 +134,7 @@ class MainViewController: BaseVC<MainViewModel> {
         }.dispose(in: bag)
     }
     
+    // Popular TableView Cell Pressed
     private func tableViewCellPressed() {
         viewModel.selectedTableIndex.observeNext { [weak self] index in
             guard let index = index,
@@ -139,6 +143,7 @@ class MainViewController: BaseVC<MainViewModel> {
         }.dispose(in: bag)
     }
     
+    // Search TableView Pressed
     private func searchTableCellPressed() {
         viewModel.selectedSearchTableIndex.observeNext { [weak self] index in
             guard let index = index ,
@@ -147,6 +152,7 @@ class MainViewController: BaseVC<MainViewModel> {
         }.dispose(in: bag)
     }
     
+    // MainViewController States
     override func onStateChanged(_ state: ViewState) {
         guard let state = state as? MainViewState else { return }
         switch state {
@@ -170,6 +176,7 @@ class MainViewController: BaseVC<MainViewModel> {
         }
     }
     
+    // Present to Movie Detail VC
     private func presentToDetailVC(for id: Int) {
         let vc = MovieDetailsViewController()
         vc.modalPresentationStyle = .overCurrentContext
@@ -177,6 +184,7 @@ class MainViewController: BaseVC<MainViewModel> {
         self.present(vc, animated: true)
     }
     
+    // Present to Person Detail VC
     private func presentToPersonVC(for id: Int) {
         let vc = CastDetailsViewController()
         vc.modalPresentationStyle = .overCurrentContext

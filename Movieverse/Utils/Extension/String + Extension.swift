@@ -8,6 +8,8 @@
 import Foundation
 
 extension String {
+    
+    // Date Format Method
     func getDate() -> String{
         let formatter = DateFormatter()
         formatter.dateFormat = "YYYY-MM-dd"
@@ -19,6 +21,7 @@ extension String {
         }
     }
     
+    // Get Year Method From Formatter Date
     func getYearValue() -> String{
         let formatter = DateFormatter()
         formatter.dateFormat = "YYYY-MM-dd"

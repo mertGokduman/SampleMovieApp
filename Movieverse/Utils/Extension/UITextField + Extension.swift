@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+// Set Textfield For Search
 extension UITextField {
     
     func setSearchBar() {
@@ -19,8 +20,7 @@ extension UITextField {
                                                          attributes: [
                                                             NSAttributedString.Key.foregroundColor: UIColor.white,
                                                             NSAttributedString.Key.font: UIFont(name: "Nunito-SemiBold", size: 16)!
-                                                         ]
-        )
+                                                         ])
         setLeftView()
         setRightView()
     }

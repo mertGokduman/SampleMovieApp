@@ -44,6 +44,7 @@ class MoviesTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    // Setting Cell with Popular Movie
     private func setData() {
         guard let movie = movie else {
             return
@@ -53,6 +54,7 @@ class MoviesTableViewCell: UITableViewCell {
         getImage(with: movie.posterPath)
     }
     
+    // Setting Cell with Searched Data
     private func setDataWithSearch() {
         guard let searchResult = searchResult else { return }
         lblTitle.text = searchResult.name~.isEmpty ? searchResult.title : searchResult.name
@@ -60,6 +62,7 @@ class MoviesTableViewCell: UITableViewCell {
         getImage(with: searchResult.profilePath~.isEmpty ? searchResult.posterPath : searchResult.profilePath)
     }
     
+    // Getting Image with Kingfisher
     private func getImage(with urlPath: String?) {
         if let urlPath = urlPath {
             let baseURL: String = "https://image.tmdb.org/t/p/w500"

@@ -52,10 +52,12 @@ class BaseVC<VM>: UIViewController where VM: BaseViewModel {
     
     func onStateChanged(_ state: ViewState) { }
     
+    // Loading Animation Start
     func startLoading() {
         ScreenActivityIndicator.shared.startAnimation()
     }
 
+    // Loading Animation Stop
     func stopLoading() {
         ScreenActivityIndicator.shared.stopAnimation()
     }

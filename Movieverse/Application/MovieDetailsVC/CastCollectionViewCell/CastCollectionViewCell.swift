@@ -29,6 +29,7 @@ class CastCollectionViewCell: UICollectionViewCell {
         // Initialization code
     }
     
+    // Set Cell with Person Data
     private func setData() {
         
         guard let person = person else { return }
@@ -36,6 +37,7 @@ class CastCollectionViewCell: UICollectionViewCell {
         getImage(with: person.profilePath)
     }
     
+    // Get Image with Kingfisher
     private func getImage(with urlPath: String?) {
 
         if let urlPath = urlPath {

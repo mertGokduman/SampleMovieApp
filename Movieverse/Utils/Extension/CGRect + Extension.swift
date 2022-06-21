@@ -9,5 +9,5 @@ import Foundation
 import UIKit
 
 extension CGRect {
-    var center: CGPoint { .init(x: midX, y: midY) }
+    var center: CGPoint { .init(x: midX, y: midY) } // Get Phone Screen Center
 }

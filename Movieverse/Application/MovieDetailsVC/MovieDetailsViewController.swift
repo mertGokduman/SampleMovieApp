@@ -65,6 +65,7 @@ class MovieDetailsViewController: BaseVC<MovieDetailsViewModel> {
         viewModel.pageOpened()
     }
     
+    // Binding MovieDetail Data
     override func bind() {
         
         viewModel.movieDetails.observeNext { [weak self] movie in
@@ -85,6 +86,7 @@ class MovieDetailsViewController: BaseVC<MovieDetailsViewModel> {
         }.dispose(in: bag)
     }
     
+    // Binding Colelctionview
     private func bindCollectionView() {
         
         viewModel.movieCast.bind(to: castCollectionView) { cast , indexpath, collectionview -> UICollectionViewCell in
@@ -95,6 +97,7 @@ class MovieDetailsViewController: BaseVC<MovieDetailsViewModel> {
         castCollectionView.reactive.selectedItemIndexPath.map { $0.row }.bind(to: viewModel.selectedIndex).dispose(in: bag)
     }
     
+    // Button Bindings
     private func buttonBindings() {
         btnBack.reactive.tap.bind(to: self) { $0.viewModel.btnClosePressed() }.dispose(in: bag)
         btnPlay.reactive.tap.bind(to: self) { $0.viewModel.btnPlayPressed() }.dispose(in: bag)
@@ -102,6 +105,7 @@ class MovieDetailsViewController: BaseVC<MovieDetailsViewModel> {
         btnIMDB.reactive.tap.bind(to: self) { $0.viewModel.btnIMDBPressed() }.dispose(in: bag)
     }
     
+    // Cast CollectionView Cell Pressed
     private func collectionViewCellSelected() {
         viewModel.selectedIndex.observeNext { [weak self] index in
             guard let index = index,
@@ -110,6 +114,7 @@ class MovieDetailsViewController: BaseVC<MovieDetailsViewModel> {
         }.dispose(in: bag)
     }
     
+    // MovieDetailsVC States
     override func onStateChanged(_ state: ViewState) {
         guard let state = state as? MovieDetailsViewState else { return }
         switch state {
@@ -129,6 +134,7 @@ class MovieDetailsViewController: BaseVC<MovieDetailsViewModel> {
         }
     }
     
+    // Present to CastDetailVC
     private func presentToCastVC(for id: Int) {
         let vc = CastDetailsViewController()
         vc.modalPresentationStyle = .overCurrentContext
@@ -137,6 +143,7 @@ class MovieDetailsViewController: BaseVC<MovieDetailsViewModel> {
     }
 }
 
+//MARK: - UICollectionViewDelegateFlowLayout
 extension MovieDetailsViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
