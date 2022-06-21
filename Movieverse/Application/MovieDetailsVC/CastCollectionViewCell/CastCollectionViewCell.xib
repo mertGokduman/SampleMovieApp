@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Nunito-ExtraBold.ttf">
+            <string>Nunito-ExtraBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="gTV-IL-0wX" customClass="CastCollectionViewCell" customModule="Movieverse" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="195" height="200"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="195" height="200"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SOn-ov-RTC">
+                        <rect key="frame" x="0.0" y="0.0" width="195" height="200"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9EP-LX-waA">
+                                <rect key="frame" x="0.0" y="0.0" width="195" height="200"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9BM-Tj-i2g">
+                                <rect key="frame" x="10" y="190" width="175" height="0.0"/>
+                                <fontDescription key="fontDescription" name="Nunito-ExtraBold" family="Nunito" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="9BM-Tj-i2g" secondAttribute="trailing" constant="10" id="4yZ-K4-8JF"/>
+                            <constraint firstAttribute="bottom" secondItem="9EP-LX-waA" secondAttribute="bottom" id="5R7-zl-trv"/>
+                            <constraint firstItem="9EP-LX-waA" firstAttribute="leading" secondItem="SOn-ov-RTC" secondAttribute="leading" id="AjY-j7-IeQ"/>
+                            <constraint firstAttribute="bottom" secondItem="9BM-Tj-i2g" secondAttribute="bottom" constant="10" id="OAV-QX-kCs"/>
+                            <constraint firstItem="9BM-Tj-i2g" firstAttribute="leading" secondItem="SOn-ov-RTC" secondAttribute="leading" constant="10" id="T1k-JI-7Ax"/>
+                            <constraint firstItem="9EP-LX-waA" firstAttribute="top" secondItem="SOn-ov-RTC" secondAttribute="top" id="lLV-rj-awG"/>
+                            <constraint firstAttribute="trailing" secondItem="9EP-LX-waA" secondAttribute="trailing" id="qv7-Qg-bBS"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="SOn-ov-RTC" secondAttribute="trailing" id="1m7-KK-8OD"/>
+                <constraint firstItem="SOn-ov-RTC" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="bXx-Aa-yiS"/>
+                <constraint firstItem="SOn-ov-RTC" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="uLt-VF-IH4"/>
+                <constraint firstAttribute="bottom" secondItem="SOn-ov-RTC" secondAttribute="bottom" id="y4Y-Qa-79W"/>
+            </constraints>
+            <connections>
+                <outlet property="imgPerson" destination="9EP-LX-waA" id="DaC-iG-yWM"/>
+                <outlet property="lblName" destination="9BM-Tj-i2g" id="9sr-II-MmE"/>
+            </connections>
+            <point key="canvasLocation" x="132" y="84"/>
+        </collectionViewCell>
+    </objects>
+</document>
