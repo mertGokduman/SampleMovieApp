@@ -61,6 +61,7 @@ class NetworkCall {
                   failed(.urlError)
                   return
               }
+              
               AF.request(url, method: methodType).responseDecodable(of: S.self) { response in
                   if let error = response.error {
                       print("There is an error when fetching data" + "\(error)")
